@@ -1,0 +1,8 @@
+# gengetopt configuration file
+package "init"
+
+# Options
+option "verbose"    v "Increase program verbosity" flag off
+option "clientID"   c "Client ID"                  string optional default="Imgtec"
+option "bootstrap"  b "Bootstrap server"           string optional default="coap://[2001:1418:100::1]:15683/"
+option "port"       p "CoAP Port"                  int    optional default="5683"

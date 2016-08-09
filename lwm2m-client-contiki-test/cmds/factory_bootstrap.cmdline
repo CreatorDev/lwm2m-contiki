@@ -1,0 +1,6 @@
+# gengetopt configuration file
+package "factory_boostrap"
+
+# Options
+option "serverURI"  u "Server URI"                 string optional default="coap://[aaaa::1]:5683/"
+option "lifetime"  	t "Lifetime"           		   int optional default="60"

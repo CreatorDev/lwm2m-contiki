@@ -1,0 +1,13 @@
+obj_native/
+obj_seedeye/
+obj_mikro-e/
+obj_minimal-net/
+symbols.c
+symbols.h
+*.map
+*.a
+*.seedeye
+*.mikro-e
+*.native
+*.minimal-net
+*.hex

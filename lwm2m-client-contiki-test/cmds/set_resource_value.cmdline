@@ -1,0 +1,9 @@
+# gengetopt configuration file
+package "set_resource_value"
+
+# Options
+option "objectID"  	  	    o "Object ID"                             int 
+option "objectInstanceID"   i "Object Instance ID"                    int 
+option "resourceID"	        r "Resource ID"                           int
+option "resourceInstanceID" n "Resource Instance ID"  				  int 
+option "value" 				v "Resource Value (base64 encoded)"  	  string

@@ -1,0 +1,12 @@
+# gengetopt configuration file
+package "define_resource"
+
+# Options
+option "objectID"  	  o "Object ID"                             int
+option "resourceID"	  r "Resource ID"                           int
+option "resourceName" k "Resource Name"                         string
+option "resourceType" t "Resource Type"                         int
+option "min"  		  n "Minimum number of Resource instances"  int
+option "max"  		  m "Maximum number of Resource instances"  int
+option "operations"   p "Permitted resource operations"  		int
+option "resourceSize" s "Resource instance size"		  		int

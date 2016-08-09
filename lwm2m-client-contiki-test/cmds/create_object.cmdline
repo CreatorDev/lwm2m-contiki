@@ -1,0 +1,6 @@
+# gengetopt configuration file
+package "create_object"
+
+# Options
+option "objectID"  	o "Object ID"           int 
+option "instanceID" i "Object Instance ID"  int 
