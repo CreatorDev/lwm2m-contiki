@@ -4,6 +4,6 @@
 [submodule "contiki"]
 	path = contiki
 	url = https://github.com/datachi7d/contiki.git
-[submodule "libobjects"]
+[submodule "libobjects-fixes"]
 	path = libobjects
 	url = https://github.com/seank-img/libobjects.git
