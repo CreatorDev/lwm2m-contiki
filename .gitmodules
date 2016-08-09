@@ -1,0 +1,9 @@
+[submodule "AwaLWM2M"]
+	path = AwaLWM2M
+	url = https://github.com/FlowM2M/AwaLWM2M.git
+[submodule "contiki"]
+	path = contiki
+	url = https://github.com/datachi7d/contiki.git
+[submodule "libobjects"]
+	path = libobjects
+	url = https://github.com/seank-img/libobjects.git
