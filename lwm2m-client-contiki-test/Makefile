@@ -30,11 +30,7 @@ CONTIKI=../contiki
 
 ifeq ($(TARGET),minimal-net)
   CFLAGS += -DPROJECT_CONF_H='"project-conf.h"' -DVERSION='$(VERSION)'
-  CFLAGS += -DUIP_CONF_BUFFER_SIZE=4096
-  CFLAGS += -DREST_MAX_CHUNK_SIZE=512
 endif
-
-
 
 CFLAGS += -Wall -Wno-pointer-sign -DLWM2M_CLIENT
 CFLAGS += -I$(LWM2M_DIR)/api/include
@@ -45,8 +41,7 @@ ifneq (,$(filter  $(TARGET),seedeye mikro-e))
   LDFLAGS += -Wl,--defsym,_min_heap_size=64000
 endif
 
-APPS += er-coap
-APPS += rest-engine
+APPS += erbium
 APPS += serial-shell
 APPS += client
 APPS += common
