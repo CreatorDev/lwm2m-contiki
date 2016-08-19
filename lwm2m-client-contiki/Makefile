@@ -27,11 +27,7 @@ CONTIKI_PROJECT=lwm2m-client-contiki
 VERSION?="$(shell cat $(LWM2M_DIR)/VERSION)"
 CONTIKI=../contiki
 
-CFLAGS += -DPROJECT_CONF_H=\"project-conf.h\" -DVERSION='$(VERSION)'
-#ifeq ($(TARGET),minimal-net)
-#  CFLAGS += -DUIP_CONF_BUFFER_SIZE=4096
-#  CFLAGS += -DREST_MAX_CHUNK_SIZE=512
-#endif
+CFLAGS += -DPROJECT_CONF_H='"project-conf.h"' -DVERSION='\"$(VERSION)\"'
 
 CFLAGS += -Wall -Wno-pointer-sign -DLWM2M_CLIENT
 CFLAGS += -I$(LWM2M_DIR)/api/include

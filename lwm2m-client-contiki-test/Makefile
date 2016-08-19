@@ -27,16 +27,12 @@ CONTIKI_PROJECT=lwm2m-client-contiki-test
 VERSION?="$(shell cat $(LWM2M_DIR)/VERSION)"
 CONTIKI=../contiki
 
-
-ifeq ($(TARGET),minimal-net)
-  CFLAGS += -DPROJECT_CONF_H='"project-conf.h"' -DVERSION='$(VERSION)'
-endif
+CFLAGS += -DPROJECT_CONF_H='"project-conf.h"' -DVERSION='\"$(VERSION)\"'
 
 CFLAGS += -Wall -Wno-pointer-sign -DLWM2M_CLIENT
 CFLAGS += -I$(LWM2M_DIR)/api/include
 
 ifneq (,$(filter  $(TARGET),seedeye mikro-e)) 
-  CFLAGS += -DPROJECT_CONF_H='"project-conf.h"' -DVERSION='\"$(VERSION)\"'
   CFLAGS += -fno-short-double
   LDFLAGS += -Wl,--defsym,_min_heap_size=64000
 endif
