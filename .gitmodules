@@ -3,7 +3,7 @@
 	url = https://github.com/FlowM2M/AwaLWM2M.git
 [submodule "contiki"]
 	path = contiki
-	url = https://github.com/datachi7d/contiki.git
+	url = https://github.com/CreatorDev/contiki.git
 [submodule "libobjects-fixes"]
 	path = libobjects
-	url = https://github.com/seank-img/libobjects.git
+	url = https://github.com/CreatorKit/libobjects.git
