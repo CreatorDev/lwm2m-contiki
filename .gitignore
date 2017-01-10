@@ -1,2 +1,4 @@
 .cproject
 .project
+.vscode/*
+!.vscode/extensions.json
