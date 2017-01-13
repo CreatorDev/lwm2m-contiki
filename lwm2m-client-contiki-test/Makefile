@@ -27,20 +27,14 @@ CONTIKI_PROJECT=lwm2m-client-contiki-test
 VERSION?="$(shell cat $(LWM2M_DIR)/VERSION)"
 CONTIKI=../contiki
 
+all: $(CONTIKI_PROJECT)
 
-ifeq ($(TARGET),minimal-net)
-  CFLAGS += -DPROJECT_CONF_H='"project-conf.h"' -DVERSION='$(VERSION)'
-  CFLAGS += -DUIP_CONF_BUFFER_SIZE=4096
-  CFLAGS += -DREST_MAX_CHUNK_SIZE=512
-endif
-
-
+CFLAGS += '-DVERSION=$(VERSION)'
 
 CFLAGS += -Wall -Wno-pointer-sign -DLWM2M_CLIENT
 CFLAGS += -I$(LWM2M_DIR)/api/include -I$(LWM2M_DIR)/core/src/erbium
 
 ifneq (,$(filter  $(TARGET),seedeye mikro-e))
-  CFLAGS += -DPROJECT_CONF_H='"project-conf.h"' -DVERSION='\"$(VERSION)\"'
   CFLAGS += -fno-short-double
   LDFLAGS += -Wl,--defsym,_min_heap_size=64000
 endif
@@ -51,8 +45,21 @@ APPS += client
 APPS += common
 APPS += jsmn
 APPS += b64
-APPS += hmac
+#APPS += hmac
 APPS += libobjects
+
+ifeq ("$(TINYDTLS)","1")
+APPS += tinydtls/aes tinydtls/sha2 tinydtls/ecc tinydtls
+CFLAGS += -DDTLS_PEERS_NOHASH=1
+-include $(CONTIKI)/apps/tinydtls/Makefile.clone
+$(CONTIKI)/apps/tinydtls/Makefile.clone:
+	git clone https://git.eclipse.org/r/tinydtls/org.eclipse.tinydtls $(dir $@)
+	cd $(dir $@) ; \
+		git checkout 0016138fe3998552eee3987a1c09da43a23c9fb5 ;\
+		autoreconf ;\
+		./configure --with-contiki --without-ecc --without-debug
+	touch $@
+endif
 
 APPDIRS += $(LWM2M_DIR)/core/src
 APPDIRS += $(LWM2M_DIR)/lib
@@ -65,8 +72,6 @@ CMDS_DIR := cmds
 PROJECTDIRS += cmds
 PROJECT_SOURCEFILES += $(notdir $(wildcard $(CMDS_DIR)/*cmdline.c))
 CMDLINE_FILES = $(notdir $(wildcard $(CMDS_DIR)/*.cmdline))
-
-all: $(CONTIKI_PROJECT)
 
 cmdline: $(CMDLINE_FILES)
 

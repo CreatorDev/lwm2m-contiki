@@ -28,10 +28,7 @@ VERSION?="$(shell cat $(LWM2M_DIR)/VERSION)"
 CONTIKI=../contiki
 
 CFLAGS += -DPROJECT_CONF_H=\"project-conf.h\" -DVERSION='$(VERSION)'
-ifeq ($(TARGET),minimal-net)
-  CFLAGS += -DUIP_CONF_BUFFER_SIZE=4096
-  CFLAGS += -DREST_MAX_CHUNK_SIZE=512
-endif
+
 CFLAGS += -Wall -Wno-pointer-sign -DLWM2M_CLIENT
 CFLAGS += -I$(LWM2M_DIR)/api/include
 
@@ -40,8 +37,7 @@ ifneq (,$(filter  $(TARGET),seedeye mikro-e))
   LDFLAGS += -Wl,--defsym,_min_heap_size=64000
 endif
 
-APPS += er-coap
-APPS += rest-engine
+APPS += erbium
 
 # fixme
 APPS += client
@@ -49,17 +45,9 @@ APPS += common
 
 APPS += jsmn
 APPS += b64
-APPS += hmac
-#remove this for seedeye/MikroE/MakeSense
-ifeq ($(TARGET),minimal-net)
-  APPS += xml
-endif
+
 APPDIRS += $(LWM2M_DIR)/lib
 APPDIRS += $(LWM2M_DIR)/core/src
-
-# optional rules to get assembly
-#CUSTOM_RULE_C_TO_OBJECTDIR_O = 1
-#CUSTOM_RULE_S_TO_OBJECTDIR_O = 1
 
 CONTIKI_WITH_IPV6 = 1
 CONTIKI_WITH_RPL = 0
