@@ -54,9 +54,6 @@
 #include "b64.h"
 
 #include <awa/static.h>
-#include "lwm2m-client-flow-object.h"
-#include "lwm2m-client-flow-access-object.h"
-#include "lwm2m-client-device-object.h"
 
 #include "cmds/init-cmdline.h"
 #include "cmds/factory_bootstrap-cmdline.h"
